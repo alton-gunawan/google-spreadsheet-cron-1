@@ -14,7 +14,7 @@ const serviceAccountAuth = new JWT({
 
 const doc = new GoogleSpreadsheet(
   // Ganti ID Google Spreadsheet
-  process.env.ID_SPREADSHEET as string,
+  process.env.NEXT_PUBLIC_ID_SPREADSHEET as string,
   serviceAccountAuth
 );
 
@@ -24,7 +24,7 @@ export async function getValues(min: number, max: number) {
   try {
     await doc.loadInfo();
 
-    const sheet = doc.sheetsByTitle[process.env.NAMA_SHEET as string];
+    const sheet = doc.sheetsByTitle[process.env.NEXT_PUBLIC_NAMA_SHEET as string];
     const rows = await sheet.getRows();
 
     for (let index = min; index <= max; index++) {
